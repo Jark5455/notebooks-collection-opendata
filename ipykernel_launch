@@ -1,0 +1,24 @@
+#!/bin/bash
+
+VIRTUAL_ENV=/home/yashr/Documents/notebooks-collection-opendata/venv
+export VIRTUAL_ENV
+
+_OLD_VIRTUAL_PATH="$PATH"
+PATH="$VIRTUAL_ENV/"bin":$PATH"
+export PATH
+
+# unset PYTHONHOME if set
+# this will fail if PYTHONHOME is set to the empty string (which is bad anyway)
+# could use `if (set -u; : $PYTHONHOME) ;` in bash
+if [ -n "${PYTHONHOME:-}" ] ; then
+    _OLD_VIRTUAL_PYTHONHOME="${PYTHONHOME:-}"
+    unset PYTHONHOME
+fi
+
+if [ -z "${VIRTUAL_ENV_DISABLE_PROMPT:-}" ] ; then
+    _OLD_VIRTUAL_PS1="${PS1:-}"
+    PS1='(venv) '"${PS1:-}"
+    export PS1
+fi
+
+python3.9 -Xfrozen_modules=off -m ipykernel_launcher -f $1
